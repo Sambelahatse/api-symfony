@@ -26,7 +26,7 @@ class EmprunteurController extends AbstractController
         $emprunteurs = $emprunteurRepository->findAll();
         $data = [];
         foreach ($emprunteurs as $emprunteur) {
-            $data = [
+            $data [] = [
                 "nom" => $emprunteur->getNom(),
                 "prenom" => $emprunteur->getPrenom(),
                 "adresse" => $emprunteur->getAdresse(),
@@ -52,10 +52,10 @@ class EmprunteurController extends AbstractController
         if ($emprunteur) {
 
             $data = [
-                "nom" => $emprunteur->getNom(),
-                "prenom" => $emprunteur->getPrenom(),
-                "adresse" => $emprunteur->getAdresse(),
-                "contact" => $emprunteur->getContact(),
+                "nom"       => $emprunteur->getNom(),
+                "prenom"    => $emprunteur->getPrenom(),
+                "adresse"   => $emprunteur->getAdresse(),
+                "contact"   => $emprunteur->getContact(),
             ];
 
             return $this->json($data); 
@@ -81,7 +81,7 @@ class EmprunteurController extends AbstractController
 
         $data = json_decode($request->getContent(), true);
 
-        if ($data!=null) {
+        if ($data) {
             $emprunteur = new Emprunteur();
             $emprunteur->setNom($data['nom']);
             $emprunteur->setPrenom($data['prenom']);
